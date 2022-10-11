@@ -2,6 +2,7 @@ from django.db import models
 
 from users.models import User
 
+
 # Create your models here.
 class ProductCategory(models.Model):
     name = models.CharField(max_length=64, unique=True)
@@ -35,3 +36,6 @@ class Basket(models.Model):
 
     def __str__(self):
         return f"Корзина для {self.user.username} | Продукт {self.product.name}"
+
+    def sum(self):
+        return self.quantity * self.product.price
